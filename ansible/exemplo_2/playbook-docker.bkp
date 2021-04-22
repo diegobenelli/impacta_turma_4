@@ -3,16 +3,17 @@
   debugger: on_skipped
 
   tasks:
-  - name: Instalando docker e o compose juntos
+  - name: Instalando docker
     apt:
-      name: "{{ item }}"
+      name: docker.io
       update_cache: yes
       state: present
-
-    with_items:
-     - docker.io
-     - docker-compose
   
+  - name: Instalando docker-compose
+    apt:
+      name: docker-compose
+      update_cache: yes
+      state: present
 
   - name: Habilitar docker no boot
     service:
